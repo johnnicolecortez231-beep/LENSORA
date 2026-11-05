@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0c">
+  <title>Pro Camera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="top">
+      <button id="btnGrid" class="chip" aria-pressed="false">Grid</button>
+      <select id="aspect" class="chip" aria-label="Aspect ratio">
+        <option value="3:2" selected>3:2</option>
+        <option value="4:3">4:3</option>
+        <option value="16:9">16:9</option>
+        <option value="1:1">1:1</option>
+        <option value="full">Full</option>
+      </select>
+      <select id="res" class="chip" aria-label="Video resolution">
+        <option value="720">720p</option>
+        <option value="1080" selected>1080p</option>
+        <option value="2160">4K</option>
+      </select>
+      <button id="btnTimer" class="chip">Timer: Off</button>
+      <select id="format" class="chip" aria-label="File format">
+        <option value="jpeg" selected>JPG</option>
+        <option value="png">PNG</option>
+      </select>
+      <button id="btnTorch" class="chip" hidden>Torch</button>
+    </header>
+
+    <main class="stage">
+      <canvas id="view"></canvas>
+      <div id="gridOverlay" class="grid" hidden></div>
+      <div id="countdown" hidden></div>
+      <div id="flash"></div>
+      <div id="start" class="overlay">
+        <h1>Pro Camera</h1>
+        <p>Full-resolution photos with a built-in color grading pipeline.</p>
+        <button id="btnStart" class="primary">Start camera</button>
+        <p id="msg" class="msg"></p>
+      </div>
+    </main>
+
+    <section id="sheet" class="sheet" hidden>
+      <nav class="tabs">
+        <button class="tab active" data-tab="look">Look</button>
+        <button class="tab" data-tab="camera">Camera</button>
+      </nav>
+      <div id="tab-look" class="panel">
+        <div id="presets" class="presets"></div>
+        <div id="sliders" class="sliders"></div>
+        <button id="btnReset" class="link">Reset look</button>
+      </div>
+      <div id="tab-camera" class="panel" hidden>
+        <label class="row">Camera
+          <select id="device"></select>
+        </label>
+        <div id="proControls" class="sliders"></div>
+        <p id="proNote" class="note"></p>
+      </div>
+    </section>
+
+    <footer class="bar">
+      <button id="thumb" class="thumb" aria-label="Open last photo"></button>
+      <button id="shutter" class="shutter" aria-label="Take photo"><span></span></button>
+      <div class="right">
+        <button id="btnLook" class="round" aria-label="Toggle look panel">Look</button>
+        <button id="compare" class="round" aria-label="Hold to see original">Orig</button>
+        <button id="flip" class="round" aria-label="Switch camera">Flip</button>
+      </div>
+    </footer>
+  </div>
+
+  <dialog id="viewer">
+    <img id="viewerImg" alt="Captured photo">
+    <div class="viewer-actions">
+      <a id="dl" class="primary" download>Download</a>
+      <button id="share" class="chip">Share</button>
+      <button id="del" class="chip">Delete</button>
+      <button id="prev" class="chip">Prev</button>
+      <button id="next" class="chip">Next</button>
+      <button id="closeViewer" class="chip">Close</button>
+    </div>
+    <p id="viewerInfo" class="note"></p>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
